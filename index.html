@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./jsInterface/interface.css">
+  <link rel="stylesheet" href="style.css">
+  <title>BookTake | Protonium Book Listing Applications | Proton</title>
+</head>
+<body>
+  <div class="container">
+    <div class="flash">
+    </div>
+    <div class="title">
+      <h1>BookTake</h1>
+      <p>Where you take books with knowledge</p>
+    </div>
+    <!-- The form section -->
+    <section id="form-section">
+      <form class="main-form">
+        <div class="form-group">
+          <label for="book-title">Book Title</label>
+          <input type="text" id="book-title">
+        </div>
+        <div class="form-group">
+          <label for="book-author">Book Author</label>
+          <input type="text" id="book-author">
+        </div>
+        <div class="form-group">
+          <label for="book-isbn">ISBN</label>
+          <input type="text" id="book-isbn">
+        </div>
+        <input type="submit" value="SUBMIT" class="btn-primary">
+      </form>
+    </section>
+  </div>
+  <script src="./jsInterface/interface.js"></script>
+  <script src="./classes.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
