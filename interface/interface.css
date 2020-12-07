@@ -1,0 +1,34 @@
+@keyframes flash-in {
+  0% {
+    opacity: 0;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    height: 40px;
+    padding: 10px;
+    margin: 0px 0px 5px 0px;
+    transform: translateX(0%);
+  }
+}
+@keyframes flash-out {
+  0% {
+    opacity: 1;
+    height: 40px;
+    padding: 10px;
+    margin: 0px 0px 5px 0px;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    transform: translateX(100%);
+  }
+}
+
+/*# sourceMappingURL=interface.css.map */

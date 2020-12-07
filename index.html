@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./jsInterface/interface.css">
-  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/8f301084b2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./interface/interface.css">
+  <link rel="stylesheet" href="./style.css">
   <title>BookTake | Protonium Book Listing Applications | Proton</title>
 </head>
 <body>
@@ -33,9 +34,33 @@
         <input type="submit" value="SUBMIT" class="btn-primary">
       </form>
     </section>
+    <!-- The books section -->
+    <section id="books-section">
+      <h2>Your Books</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Book One</td>
+            <td>John Doe</td>
+            <td class="cross-container">9847 <i class="fas fa-times"></i></td>
+          </tr>
+          <tr>
+            <td>Book One</td>
+            <td>John Doe</td>
+            <td>9847</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </div>
-  <script src="./jsInterface/interface.js"></script>
-  <script src="./classes.js"></script>
+  <script src="./interface/interface.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

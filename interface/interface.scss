@@ -1,0 +1,53 @@
+// This file containes all the keyframes and other stuff related to js interface file
+// Definations given below
+
+
+// This mixin is generic coming animation
+@mixin  incomingKeyframe($name, $height:auto, $padding:auto, $margin:auto, $translateX:0%) {
+    @keyframes #{$name} {
+        0% {
+            opacity: 0;
+            height: 0px;
+            padding: 0px;
+            margin: 0px;
+            transform: translateX($translateX);
+        }
+        100% {
+            opacity: 1;
+            height: $height;
+            padding: $padding;
+            margin: $margin;
+            transform: translateX(0%);
+        }
+        
+    }
+}
+
+// This mixin is generic leaving animation
+@mixin  outgoingKeyFrame($name, $height:auto, $padding:auto, $margin:auto, $translateX:0%) {
+    @keyframes #{$name} {
+        0% {
+            opacity: 1;
+            height: $height;
+            padding: $padding;
+            margin: $margin;
+            transform: translateX(0px);
+        }
+        100% {
+            opacity: 0;
+            height: 0px;
+            padding: 0px;
+            margin: 0px;
+            transform: translateX($translateX);
+        }
+    }
+}
+
+
+
+
+// Below is the compiled stylesheet
+
+// These two keyframes are for error flashings
+@include incomingKeyframe('flash-in', 40px, 10px, 0px 0px 5px 0px, -100%);
+@include outgoingKeyFrame('flash-out', 40px, 10px, 0px 0px 5px 0px, 100%);

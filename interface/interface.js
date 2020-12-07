@@ -1,6 +1,10 @@
 // The generic dom container element class
 class DOMContainer{
-    constructor(objectHint){
+    constructor(objectHint,
+        appendAnimation = 'append-yourself',
+        removeAnimation = 'remove-Yourself',
+        animationDuration = 500,
+        transitionDuration = 200){
         if (typeof objectHint.tagName === 'undefined'){
             // Then the hint is a query string
             this.element = document.querySelector(objectHint);
@@ -9,15 +13,32 @@ class DOMContainer{
             this.element = objectHint;
         }
         this.element.style.transitionProperty = 'opacity';
-        this.styleTransitionDuration = 500;
+        this.transitionDuration = transitionDuration;
         this.element.style.transitionDuration = `${this.styleTransitionDuration}ms`;
+        // registering the appending and removing animations
+        this.appendAnimation = appendAnimation;
+        this.removeAnimation = removeAnimation;
+        this.animationDuration = animationDuration;
+    }
+
+    setup(elementItem){
+        // This function sets up an element to be added for the animations
+        elementItem.style.animationName = this.appendAnimation;
+        elementItem.style.animationDuration = `${this.animationDuration}ms`;
+        elementItem.style.animationFillMode = 'forwards';
+        elementItem.style.animationPlayState = 'paused';
     }
 
     appendChildWithStyle(elementItem){
-        this.element.appendChild(elementItem);
+        // this function appends an element with the specified animations
+        this.setup(elementItem);
+        // capturing the domContainer due to some referrence issues in event handler
+        const container = this;
+        container.element.appendChild(elementItem);
         elementItem.style.animationPlayState = 'running';
         elementItem.addEventListener('animationend', function(e){
-            this.style.animationName = 'remove-yourself';
+            // sets the animation to whatever the removing is supplied in the domContainer
+            this.style.animationName = container.removeAnimation;
             this.style.animationPlayState = 'paused';
         });
     };
@@ -48,24 +69,39 @@ class DOMContainer{
     }
 }
 
-// The specific unordered list
-class UnorderedList extends DOMContainer{
-    constructor(queryString){
-        super(queryString);
+
+
+// This class is for the messaging container, used to give messages in the interface
+class MessageContainer extends DOMContainer {
+    constructor(objectHint,
+        appendAnimation = 'append-yourself',
+        removeAnimation = 'remove-Yourself',
+        animationDuration = 500,
+        transitionDuration = 200){
+            super(objectHint,
+                appendAnimation,
+                removeAnimation,
+                animationDuration,
+                transitionDuration);
+    }
+  
+    createAppendChild(message, typeClass) {
+        // appends the message with the applied classes
+      const child = document.createElement("div");
+      child.className = typeClass;
+      child.innerHTML = message;
+      this.appendChildWithStyle(child);
+      return child;
     }
 
-    createAppendChild(message){
-        const item = document.createElement('li');
-        item.innerHTML = message;
-        item.className = 'container-item';
-        this.appendChildWithStyle(item);
-    };
-}
-
-
-let mainUL = new UnorderedList('.container');
-
-let items = ['Ali', 'Usman', 'Junaid']
-items.forEach(function(item){
-    mainUL.createAppendChild(item);
-});
+    flash(message, typeClass, timeout=0){
+        const item = this;
+        const child = item.createAppendChild(message, typeClass);
+        if (timeout > 0){
+            setTimeout(function(){
+                item.removeChildWithStyle(child);
+            }, timeout);
+        }
+    }
+  }
+  
