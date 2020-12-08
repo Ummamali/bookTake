@@ -3,7 +3,7 @@
 
 
 // This mixin is generic coming animation
-@mixin  incomingKeyframe($name, $height:auto, $padding:auto, $margin:auto, $translateX:0%) {
+@mixin  incomingKeyFrame($name, $height:auto, $padding:auto, $margin:auto, $translateX:0%) {
     @keyframes #{$name} {
         0% {
             opacity: 0;
@@ -49,5 +49,10 @@
 // Below is the compiled stylesheet
 
 // These two keyframes are for error flashings
-@include incomingKeyframe('flash-in', 40px, 10px, 0px 0px 5px 0px, -100%);
+@include incomingKeyFrame('flash-in', 40px, 10px, 0px 0px 5px 0px, -100%);
 @include outgoingKeyFrame('flash-out', 40px, 10px, 0px 0px 5px 0px, 100%);
+
+
+// These two keyframes are for books in and out
+@include incomingKeyFrame('book-in', 34px, auto, auto, 0px);
+@include outgoingKeyFrame('book-out', 34px, auto, auto, 0px);

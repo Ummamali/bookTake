@@ -30,5 +30,37 @@
     transform: translateX(100%);
   }
 }
+@keyframes book-in {
+  0% {
+    opacity: 0;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 1;
+    height: 34px;
+    padding: auto;
+    margin: auto;
+    transform: translateX(0%);
+  }
+}
+@keyframes book-out {
+  0% {
+    opacity: 1;
+    height: 34px;
+    padding: auto;
+    margin: auto;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    transform: translateX(0px);
+  }
+}
 
 /*# sourceMappingURL=interface.css.map */
